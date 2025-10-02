@@ -1,0 +1,367 @@
+:root {
+  --orange: #EA6700;
+  --header-logo-width: 600px;
+  --header-logo-ratio: 0.511;
+  --header-logo-height: calc(var(--header-logo-width) * var(--header-logo-ratio));
+  --header-logo-box-width: calc(var(--header-logo-width) - 2px);
+  --header-logo-box-height: calc(var(--header-logo-height) - 2px);
+  --header-blue: #1E76FF;
+  --header-padding-y: 0.5rem;
+  --header-padding-x: 0px;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f7f7f7;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background: var(--orange);
+  color: #fff;
+  padding: var(--header-padding-y) var(--header-padding-x);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.Header-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+  gap: 2rem;
+  max-width: none;
+  margin: 0;
+}
+
+.Header-logo-title {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.Header-logo-box {
+  width: var(--header-logo-box-width);
+  height: var(--header-logo-box-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #EA6700;
+  overflow: hidden;
+}
+
+.Header-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.Header-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--header-blue);
+}
+
+.Header-left-group {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  margin-left: 20px;
+}
+
+.Header-actions {
+  display: flex;
+  gap: 0.7rem;
+  margin-right: 20px;
+  margin-left: 0;
+}
+
+.Header-actions .Section-toggle.inverted {
+  margin-right: 20px;
+}
+
+.Menu-dropdown-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  margin-right: 0;
+}
+
+.App-header nav {
+  margin-top: 0.5rem;
+}
+
+.App-header a {
+  color: var(--header-blue);
+  margin: 0 0.5rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.App-header a:hover {
+  color: var(--header-blue);
+}
+
+.Menu-toggle {
+  background: #ff6600;
+  color: var(--header-blue);
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+  transition: background 0.2s, color 0.2s;
+}
+
+.Menu-toggle:hover {
+  background: #fb8c00;
+  color: var(--header-blue);
+}
+
+.Dropdown-menu {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  background: #fff;
+  color: #ff6600;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  padding: 1rem 2rem;
+  z-index: 20;
+  min-width: 180px;
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Overlay-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 1;
+}
+
+.Overlay-content {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem 2.5rem 1.5rem 2.5rem;
+  z-index: 2;
+  min-width: 320px;
+  max-width: 90vw;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Overlay-close {
+  position: absolute;
+  top: 0.7rem;
+  right: 1.2rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #ff6600;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.Dropdown-menu a {
+  color: #ff6600;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.Dropdown-menu a:hover {
+  text-decoration: underline;
+}
+
+.Section-toggle {
+  background: #fff;
+  color: #ff6600;
+  border: none;
+  border-radius: 6px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 1rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+  transition: background 0.2s, color 0.2s;
+}
+
+.Section-toggle:hover {
+  background: #ffe0b2;
+  color: #d84315;
+}
+
+.Section-toggle.inverted {
+  background: #ff6600;
+  color: #fff;
+}
+
+.Section-toggle.inverted:hover {
+  background: #fb8c00;
+  color: #fff;
+}
+
+.App-body {
+  flex: 1;
+  padding: 2rem 0 2rem 0;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.Hero-section {
+  background: #fff3e0;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.Hero-section img {
+  margin-top: 1rem;
+}
+
+.Menu-section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.Menu-list {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.Menu-item {
+  background: #fff8e1;
+  border-radius: 8px;
+  padding: 1rem;
+  width: 150px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+  text-align: center;
+}
+
+.Menu-item img {
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}
+
+.Order-section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.Order-section button {
+  background: #ff9800;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.Order-section button:hover {
+  background: #fb8c00;
+}
+
+.Login-section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.Login-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.Login-section input {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 220px;
+}
+
+.Login-section button {
+  background: #ff9800;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.Login-section button:hover {
+  background: #fb8c00;
+}
+
+.App-footer {
+  background: #282c34;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 1rem;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  margin-top: 2rem;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

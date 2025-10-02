@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" width="900" height="460" role="img" aria-label="Food truck minimale con finestrino rettangolo-trapezio 45°, ruota posteriore arretrata e fanale più largo">
+  <defs>
+    <style>
+      :root{
+        --ink:#0d0d0d;      /* contorni neri principali */
+        --orange:#FF8A00;   /* cassone */
+        --blue:#1E76FF;     /* cabina */
+        --white:#ffffff;    /* ruote/piatto */
+        --background:#EA6700;    /* sfondo*/
+        --pasta:#F5D27A;    /* spaghetti */
+        --ragu:#E6492D;     /* ragù */
+        --steam:#E85A2C;    /* fumi arancio-rossi */
+      }
+      @keyframes wheel-spin {
+        100% { transform: rotate(360deg); }
+      }
+      .wheel-anim {
+        transform-box: fill-box;
+        transform-origin: 50% 50%;
+        animation: wheel-spin 1.2s linear infinite;
+      }
+    </style>
+  </defs>
+
+  <rect width="100%" height="100%" fill="var(--background)"/>
+
+  <!-- Gruppo principale -->
+  <g fill="none" stroke="var(--ink)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" transform="translate(20,14)">
+
+    <!-- Cassone (più alto della cabina) -->
+    <rect x="80" y="96" width="410" height="232" rx="28" fill="var(--orange)"/>
+
+    <!-- Banco e finestra di servizio -->
+    <rect x="136" y="156" width="250" height="72" rx="16" fill="var(--white)"/>
+    <rect x="124" y="120" width="274" height="34" rx="12" fill="var(--blue)"/>
+    <rect x="136" y="248" width="250" height="24" rx="12" fill="var(--ink)"/>
+
+    <!-- Piatto di pasta al ragù -->
+    <ellipse cx="262" cy="256" rx="68" ry="18" fill="var(--white)"/>
+    <path d="M210 250 q26 -16 52 0 q26 -16 52 0" stroke="var(--pasta)" stroke-width="9"/>
+    <path d="M218 260 q22 -10 44 0 q22 -10 44 0" stroke="var(--pasta)" stroke-width="7"/>
+    <path d="M222 244 q18 -10 36 -2 q22 12 38 -2" stroke="var(--ragu)" stroke-width="10"/>
+
+    <!-- Cabina con muso a 45°, base allineata al cassone -->
+    <path d="M510,120 L630,120 L720,210 L720,328 L510,328 Z" fill="var(--blue)"/>
+
+    <!-- Finestrino: trapezio rettangolo più stretto e spostato verso il retro
+         - sinistra verticale x=540
+         - destra a 45° parallela al muso (Δx=Δy=60)
+         - base inferiore a y=210
+    -->
+    <polygon points="540,150 606,150 666,210 540,210"
+             fill="var(--white)" stroke="var(--ink)" stroke-width="10"/>
+
+    <!-- Maniglia: riga nera allineata al lato sinistro del finestrino -->
+    <line x1="540" y1="238" x2="580" y2="238" stroke="var(--ink)" stroke-width="10" stroke-linecap="round"/>
+
+    <!-- Fanale rettangolare più largo verso l'interno e leggermente più alto
+         - bordo destro allineato al muso (x=720)
+         - width 32, height 24
+    -->
+    <rect x="688" y="246" width="32" height="24" rx="3"
+          fill="var(--white)" stroke="var(--ink)" stroke-width="14"/>
+
+  <!-- Ruote con cerchioni minimal -->
+  <!-- Posteriore (ancora un filo più indietro) -->
+  <g id="ruota-post" class="wheel-anim">
+      <circle cx="248" cy="340" r="44" fill="var(--white)"/>
+      <circle cx="248" cy="340" r="24" fill="none" stroke="var(--ink)" stroke-width="8"/>
+      <circle cx="248" cy="340" r="6" fill="var(--ink)"/>
+      <line x1="248" y1="316" x2="248" y2="364" stroke="var(--ink)" stroke-width="6"/>
+      <line x1="224" y1="340" x2="272" y2="340" stroke="var(--ink)" stroke-width="6"/>
+      <line x1="231" y1="323" x2="265" y2="357" stroke="var(--ink)" stroke-width="6"/>
+      <line x1="231" y1="357" x2="265" y2="323" stroke="var(--ink)" stroke-width="6"/>
+    </g>
+
+  <!-- Anteriore -->
+  <g id="ruota-ant" class="wheel-anim">
+      <circle cx="570" cy="340" r="44" fill="var(--white)"/>
+      <circle cx="570" cy="340" r="24" fill="none" stroke="var(--ink)" stroke-width="8"/>
+      <circle cx="570" cy="340" r="6" fill="var(--ink)"/>
+      <line x1="570" y1="316" x2="570" y2="364" stroke="var(--ink)" stroke-width="6"/>
+      <line x1="546" y1="340" x2="594" y2="340" stroke="var(--ink)" stroke-width="6"/>
+      <line x1="553" y1="323" x2="587" y2="357" stroke="var(--ink)" stroke-width="6"/>
+      <line x1="553" y1="357" x2="587" y2="323" stroke="var(--ink)" stroke-width="6"/>
+    </g>
+
+  </g>
+
+  <!-- Fumi arancio-rossi (senza contorno nero) -->
+  <g fill="none" stroke="var(--steam)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" transform="translate(20,14)">
+    <!-- Sinusoidi parallele -->
+    <path>
+      <animate attributeName="d" dur="5.5s" repeatCount="indefinite"
+        values="M262 206 C292 198 232 174 262 158;
+                M262 206 C232 198 292 174 262 158;
+                M262 206 C292 198 232 174 262 158"/>
+    </path>
+    <path>
+      <animate attributeName="d" dur="5.5s" repeatCount="indefinite"
+        values="M288 216 C318 208 258 184 288 168;
+                M288 216 C258 208 318 184 288 168;
+                M288 216 C318 208 258 184 288 168"/>
+    </path>
+    <path>
+      <animate attributeName="d" dur="5.5s" repeatCount="indefinite"
+        values="M236 216 C266 208 206 184 236 168;
+                M236 216 C206 208 266 184 236 168;
+                M236 216 C266 208 206 184 236 168"/>
+    </path>
+  </g>
+</svg>

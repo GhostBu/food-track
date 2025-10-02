@@ -1,6 +1,6 @@
 :root {
   --orange: #EA6700;
-  --header-logo-width: 600px;
+  --header-logo-width: 200px;
   --header-logo-ratio: 0.511;
   --header-logo-height: calc(var(--header-logo-width) * var(--header-logo-ratio));
   --header-logo-box-width: calc(var(--header-logo-width) - 2px);

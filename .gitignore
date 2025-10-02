@@ -11,6 +11,22 @@
 # production
 /build
 
+# Angular build and cache
+.angular/
+dist/
+tmp/
+temp/
+
+# IDE and OS files
+.vscode/
+Thumbs.db
+ehthumbs.db
+*.swp
+*.swo
+*.bak
+*.tmp
+*.log
+
 # misc
 .DS_Store
 .env.local

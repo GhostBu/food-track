@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Header from './html_components/Header';
 import HeroSection from './html_components/HeroSection';
@@ -14,12 +14,27 @@ function App() {
   const [showMenuDropdown, setShowMenuDropdown] = useState(false);
   const [showOrder, setShowOrder] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
+  // State to pass user position to MapSection
+  const [userPosition, setUserPosition] = useState<[number, number] | null>(null);
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          setUserPosition([pos.coords.latitude, pos.coords.longitude]);
+        },
+        () => {},
+        { enableHighAccuracy: true }
+      );
+    }
+  }, []);
+
   return (
     <div className="App">
       <Header onMenuClick={() => setShowMenuDropdown((v) => !v)} showMenu={showMenuDropdown} onOrderClick={() => setShowOrder(true)} onLoginClick={() => setShowLogin(true)} />
       <main className="App-body">
         <HeroSection />
-        <MapSection />
+        <MapSection userPosition={userPosition} />
         <MenuSection />
       </main>
       {showOrder && <Overlay onClose={() => setShowOrder(false)}><OrderSection /></Overlay>}

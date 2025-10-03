@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
+import redIcon from './redIcon';
+import LocationInput from './LocationInput';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
@@ -39,19 +41,34 @@ function LocateAndCenter({ setCenter }: { setCenter: (c: [number, number]) => vo
     return null;
 }
 
-const MapSection: React.FC = () => {
+
+interface MapSectionProps {
+    userPosition?: [number, number] | null;
+}
+
+const MapSection: React.FC<MapSectionProps> = ({ userPosition }) => {
     const [center, setCenter] = useState<[number, number]>([45.4642, 9.19]); // Milano centro
+
+    useEffect(() => {
+        if (userPosition) {
+            setCenter(userPosition);
+        }
+    }, [userPosition]);
+
+    const handleLocationSelect = (coords: [number, number]) => {
+        setCenter(coords);
+    };
 
     return (
         <section className="Map-section" style={{ textAlign: 'center', margin: '2rem 0' }}>
             <h2>Mappa dei camioncini</h2>
+            <LocationInput onLocationSelect={handleLocationSelect} />
             <div style={{ width: '100%', maxWidth: 700, margin: '0 auto', height: 350 }}>
                 <MapContainer center={center} zoom={13} style={{ width: '100%', height: 350, borderRadius: 12 }} scrollWheelZoom={true}>
                     <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
-                    <LocateAndCenter setCenter={setCenter} />
                     {trucks.map(t => (
                         <Marker key={t.id} position={[t.lat, t.lng]}>
                             <Popup>
@@ -60,6 +77,25 @@ const MapSection: React.FC = () => {
                             </Popup>
                         </Marker>
                     ))}
+                    {userPosition && (
+                        <Marker position={userPosition} icon={redIcon}>
+                            <Popup>Your location</Popup>
+                            <div style={{
+                                position: 'absolute',
+                                left: '50%',
+                                top: '-30px',
+                                transform: 'translateX(-50%)',
+                                background: 'rgba(255,255,255,0.9)',
+                                color: 'red',
+                                fontWeight: 'bold',
+                                padding: '2px 6px',
+                                borderRadius: 6,
+                                fontSize: 13,
+                                pointerEvents: 'none',
+                                zIndex: 1000
+                            }}>Your location</div>
+                        </Marker>
+                    )}
                 </MapContainer>
             </div>
         </section>
